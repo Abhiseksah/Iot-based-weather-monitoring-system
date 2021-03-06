@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	exportEnabled: true,
+	title:{
+		text: "All the data"             
+	}, 
+	axisY:{
+		title: "˚C,mb,meter"
+	},
+	toolTip: {
+		shared: true
+	},
+	legend:{
+		cursor:"pointer",
+		itemclick: toggleDataSeries
+	},
+	data: [{        
+		type: "spline",  
+		name: "Temprature",        
+		showInLegend: true,
+		dataPoints: [
+			{%for i in data%}
+           {y:{{i.temprature}}},
+            {%endfor%}
+		]
+	}, 
+	{        
+		type: "spline",
+		name: "Pressure",        
+		showInLegend: true,
+		dataPoints: [
+        {%for i in data%}
+        {y:{{i.pressure}}},
+            {%endfor%}
+		]
+	},
+	{        
+		type: "spline",  
+		name: "Altitude",        
+		showInLegend: true,
+		dataPoints: [
+        {%for i in data%}
+        {y:{{i.altitude}}},
+            {%endfor%}
+		]
+	},
+	]
+});
+
+chart.render();
+
+function toggleDataSeries(e) {
+	if(typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else {
+		e.dataSeries.visible = true;            
+	}
+	chart.render();
+}
+
+}
+</script>
+</head>
+<body>
+<div id="chartContainer" style="height: 500px; max-width: 1000px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+</body>
+</html>

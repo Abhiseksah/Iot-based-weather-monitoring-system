@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <!--copy from net-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <style>
+                .card {
+            margin: 0 auto; /* Added */
+            float: none; /* Added */
+            margin-bottom: 10px; /* Added */
+    }
+
+        </style>
+        
+        <style>
+            .special-card {
+/* create a custom class so you 
+   do not run into specificity issues 
+   against bootstraps styles
+   which tends to work better than using !important 
+   (future you will thank you later)*/
+
+  background-color: rgba(245, 245, 245, 0.4);
+  opacity: .4;
+}
+        </style>
+
+<style>
+    .border {
+      display: inline-block;
+      width: 300px;
+      height: 100px;
+      margin: 20px;
+    }
+    </style>
+
+    <style>
+        h13 {
+  color: black;
+  -webkit-text-fill-color: rgb(0, 0, 0); /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: rgb(253, 249, 249);
+}
+    </style>
+    <style>
+      h111 {
+color: black;
+-webkit-text-fill-color: rgb(255, 255, 255); /* Will override color (regardless of order) */
+-webkit-text-stroke-width: 0.7px;
+-webkit-text-stroke-color: rgb(0, 0, 0);
+}
+  </style>
+
+    </head>
+    <body>
+        
+        
+    
+        
+    <div class="position-fixed"
+        style="left:700px; top:50px; width:450px;"         >
+      <center>  <span class="border border-white" >
+          <h1>Temprature</h1>
+         <h11> <h3 class="text-white">{{t}}˚C</h3></h11>
+    
+    </span> </center>
+    </div>
+        </div>
+
+        <div class="position-fixed"
+        style="left:700px; top:160px; width:450px;"         >
+      <center>  <span class="border border-white" >
+          <h1>Pressure</h1>
+          <h11><h3 class="text-white">{{p}} mb</h3></h11>
+    
+    </span> </center>
+    </div>
+        </div>
+
+        <div class="position-fixed"
+        style="left:700px; top:270px; width:450px;"         >
+      <center>  <span class="border border-white" >
+          <h1>Altitude</h1>
+         <h11> <h3 class="text-white">{{a}} meter</h3></h11>
+      
+        
+        </span> </center>
+    </div>
+        </div>
+
+   <div class="position-fixed" 
+   style="left: 20px;top: 550px;width: 700px;">
+   <h2 class="text-white">{{q}}</h2>
+   </div>
+
+<form action="/" method='post'><!--action=""-->
+    {%csrf_token%}
+    <div class="position-fixed" 
+   style="left: 880px;top: 20px;width: 50px;">
+    <button type="submit" class="btn btn-primary">Refresh</button>
+    </div>
+</form>
+    <form action="templive" method='post'>
+      {%csrf_token%}
+        <div class="position-fixed" 
+       style="left: 195px;top: 100px;width: 290px;">
+        <button type="submit" class="btn btn-success">Live Temprature</button>
+        </div>
+
+
+</form>
+<form action="presslive" method='post'>
+  {%csrf_token%}
+  <div class="position-fixed" 
+ style="left: 210px;top: 140px;width: 290px;">
+  <button type="submit" class="btn btn-success">Live Pressure</button>
+  </div>
+
+
+</form>
+<form action="tempgraph" method='post'>
+  {%csrf_token%}
+  <div class="position-fixed" 
+ style="left: 185px;top: 180px;width: 290px;">
+  <button type="submit" class="btn btn-success">Temprature Graph</button>
+  </div>
+
+
+</form>
+
+<form action="pressgraph" method='post'>
+  {%csrf_token%}
+  <div class="position-fixed" 
+ style="left: 200px;top: 220px;width: 290px;">
+  <button type="submit" class="btn btn-success">Pressure Graph</button>
+  </div>
+
+
+</form>
+
+<form action="altgraph" method='post'>
+  {%csrf_token%}
+  <div class="position-fixed" 
+ style="left: 202px;top: 260px;width: 290px;">
+  <button type="submit" class="btn btn-success">Altitude Graph</button>
+  </div>
+
+
+</form>
+
+<form action="allgraph" method='post'>
+  {%csrf_token%}
+  <div class="position-fixed" 
+ style="left: 215px;top: 300px;width: 290px;">
+  <button type="submit" class="btn btn-success">Altogether</button>
+  </div>
+
+
+</form>
+
+
+
+    
+        {%csrf_token%}
+      
+   
+       <div>
+          {% for i in m%}
+                {% if i.id is c %}
+                   <!--<img src="{{i.img.url}}" alt="pic" width="240"/>--> 
+                
+                   <style>
+                    body {
+                      background-image: url('{{i.img.url}}');
+                      background-repeat: no-repeat;
+                      background-attachment: fixed;  
+                      background-size: cover;
+                    }
+                    </style>
+                   </span>
+
+                
+
+                {%endif%}
+
+
+        
+          {%endfor%}
+        
+        
+    
+        </div>
+
+        
+        <script src="" async defer></script>
+    </body>
+</html>

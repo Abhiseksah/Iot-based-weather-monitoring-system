@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container" >
+        <form action="second" method="POST" >
+          {%csrf_token%}
+            <label for="demo">Temp</label>
+            <div class="input-group mb-3">
+              <input type="text" class="col-4 form-control" placeholder="Temp" id="demo" name="temp">
+              <div class="input-group-append">
+                <span class="input-group-text">in cal</span>
+              </div>
+            </div>
+
+            <label for="demo">press</label>
+            <div class="input-group mb-3">
+              <input type="text" class="col-4 form-control" placeholder="pressure" id="demo" name="pressure">
+              <div class="input-group-append">
+                <span class="input-group-text">in mb</span>
+              </div>
+            </div>
+           
+
+            <label for="demo">Altitude</label>
+            <div class="input-group mb-3">
+                    <input type="text" class="col-4 form-control" placeholder="Altitude" id="demo" name="alt">
+              <div class="input-group-append">
+                <span class="input-group-text">in meter</span>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+
+          </form>
+        </div>
+        <script src="" async defer></script>
+    </body>
+</html>

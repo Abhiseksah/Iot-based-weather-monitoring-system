@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>  
+<meta charset="UTF-8">
+<script>
+window.onload = function () {
+
+    CanvasJS.addColorSet("greenShades",
+                [//colorSet Array
+
+                //"#2F4F4F",
+                //"#008080",
+               // "#2E8B57",
+                "#3CB371",
+                //"#90EE90"                
+                ]);
+
+var chart = new CanvasJS.Chart("chartContainer", {
+    exportEnabled: true,
+    colorSet: "greenShades",
+	animationEnabled: true,
+	theme: "light1",
+    
+	title:{
+		text: "Altitude"
+	},
+	axisY:{
+		includeZero: false,
+        title:"Meter",
+        suffix:"m"
+	},
+	data: [{        
+		type: "line",       
+		dataPoints: [
+		    /*{ y: 450 },
+			{ y: 414},
+			{ y: 520, indexLabel: "highest",markerColor: "red", markerType: "triangle" },
+			{ y: 460 },
+			{ y: 450 },
+			{ y: 500 },
+			{ y: 480 },
+			{ y: 480 },
+			{ y: 410 , indexLabel: "lowest",markerColor: "DarkSlateGrey", markerType: "cross" },
+			{ y: 500 },
+			{ y: 480 },
+			{ y: 510 }*/
+            {%for i in data%}
+            {y:{{i.altitude}}},
+            {%endfor%}
+		]
+	}]
+});
+chart.render();
+
+}
+</script>
+</head>
+<body>
+	<form action="" method="POST">
+		{%csrf_token%}
+<div id="chartContainer" style="height: 500px; max-width: 1000px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	</form>
+	
+</body>
+</html>
